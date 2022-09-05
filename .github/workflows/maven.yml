@@ -1,28 +1,9 @@
 name: reusable workflow for automated tests running
 on:
-  workflow_call:
-    inputs:
-      environment:
-        required: true
-        type: string
-      tags:
-        required: true
-        type: string
-      browser: 
-        required: true
-        type: string
-      slackChannelID:  
-        required: false
-        type: string
-        default: ''
-      retry-on-failure: 
-        required: false
-        type: boolean
-        default: false
-      invoker: 
-        required: false
-        type: string
-        default: ''
+  push:
+    branches: [main]
+  pull_request:
+    branches : [main]
 jobs:
   run-automated-tests:
     runs-on: ubuntu-latest
