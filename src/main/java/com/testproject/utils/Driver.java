@@ -32,10 +32,10 @@ public class Driver {
                     WebDriverManager.chromedriver().setup();
                     driverPool.set(new ChromeDriver());
                     break;
-//                 case "chrome-headless":
-//                     WebDriverManager.chromedriver().setup();
-//                     driverPool.set(new ChromeDriver(new ChromeOptions().addArguments("headless").addArguments("window-size=1920,1440")));
-//                     break;
+                case "chrome-headless":
+                    WebDriverManager.chromedriver().setup();
+                    driverPool.set(new ChromeDriver(new ChromeOptions().addArguments("headless").addArguments("window-size=1920,1440")));
+                    break;
                 case "chrome-remote":
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--no-sandbox");
