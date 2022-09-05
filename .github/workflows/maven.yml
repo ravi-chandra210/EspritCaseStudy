@@ -34,4 +34,4 @@ jobs:
         
         
     - name: Build with Maven
-      run: mvn -B clean verify
+      run: mvn verify
