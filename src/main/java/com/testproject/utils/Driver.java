@@ -38,11 +38,11 @@ public class Driver {
                     break;
                 case "chrome-remote":
                     ChromeOptions chromeOptions = new ChromeOptions();
-                    chromeOptions.addArguments("headless");
+                    chromeOptions.addArguments("--headless");
+                    chromeOptions.addArguments("--no-sandbox");
+                    chromeOptions.addArguments("--disable-dev-shm-usage");
                     chromeOptions.setCapability("platform", "ANY");
                     chromeOptions.addArguments("window-size=1920,1440");
-                    chromeOptions.addArguments("--disable-dev-shm-usage");
-                    chromeOptions.addArguments("--no-sandbox");
                     driverPool.set(new RemoteWebDriver(chromeOptions));
                     System.out.println("Running REMOTE Chrome");
                     break;
