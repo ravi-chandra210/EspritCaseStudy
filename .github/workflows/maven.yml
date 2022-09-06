@@ -20,6 +20,12 @@ jobs:
       with:
         java-version: '17'
         distribution: 'adopt'
+    
+    - name: Set up virtual X11
+      run: sudo apt-get install xvfb
+    - name: Start virtual frame buffer
+      run: Xvfb :19 -screen 0 1024x768x16 &
+      
     - name: Install Chrome Browser
       run: |
         sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -27,10 +33,15 @@ jobs:
         sudo apt update
         sudo apt install -y google-chrome-stable
         google-chrome --version
-    - name: Set up virtual X11
-      run: sudo apt-get install xvfb
-    - name: Start virtual frame buffer
-      run: Xvfb :19 -screen 0 1024x768x16 &
+        
+    - name: Install Chrome Headless
+      run: |
+        sudo apt-get update
+        sudo apt-get install software-properties-common
+        sudo add-apt-repository ppa:canonical-chromium-builds/stage
+        sudo apt-get update
+        sudo apt-get install chromium-browser 
+        chromium-browser --headless --no-sandbox http://example.org/
  
     - name: Build with Maven 
       run: mvn --file pom.xml -Pcodecoverage -B package "-Djava.awt.headless=true"
