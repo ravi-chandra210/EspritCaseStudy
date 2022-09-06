@@ -38,6 +38,7 @@ public class Driver {
                     break;
                 case "chrome-remote":
                     ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.setBinary("/home/ravi-muktavarapu/.config/google-chrome/Default");
                     chromeOptions.addArguments("--no-sandbox");
                     chromeOptions.addArguments("--headless");
                     chromeOptions.addArguments("--disable-dev-shm-usage");
