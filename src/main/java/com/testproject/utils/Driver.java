@@ -39,7 +39,7 @@ public class Driver {
                 case "chrome-remote":
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.setBinary("/home/ravi-muktavarapu/.config/google-chrome/Default");
-                    chromeOptions.addArguments("--no-sandbox");
+                    chromeOptions.addArguments("headless --no-sandbox disable-gpu window-size=1920,1080");
                     chromeOptions.addArguments("--headless");
                     chromeOptions.addArguments("--disable-dev-shm-usage");
                     chromeOptions.setCapability("platform", "ANY");
