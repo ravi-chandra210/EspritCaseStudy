@@ -20,6 +20,13 @@ jobs:
       with:
         java-version: '17'
         distribution: 'adopt'
+    - name: Install Chrome Browser
+      run: |
+        sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        sudo echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google.list
+        sudo apt update
+        sudo apt install -y google-chrome-stable
+        google-chrome --version
     - name: Set up virtual X11
       run: sudo apt-get install xvfb
     - name: Start virtual frame buffer
