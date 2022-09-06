@@ -38,12 +38,10 @@ public class Driver {
                     break;
                 case "chrome-remote":
                     ChromeOptions chromeOptions = new ChromeOptions();
-                    chromeOptions.setBinary("/home/ravi-muktavarapu/.config/google-chrome/Default");
-                    chromeOptions.addArguments("headless --no-sandbox disable-gpu window-size=1920,1080");
-                    chromeOptions.addArguments("--headless");
-                    chromeOptions.addArguments("--disable-dev-shm-usage");
-                    chromeOptions.setCapability("platform", "ANY");
+                    chromeOptions.setHeadless(true);
+                    chromeOptions.setPlatformName("ANY");
                     chromeOptions.addArguments("window-size=1920,1440");
+                    chromeOptions.addArguments("--no-sandbox","--disable-dev-shm-usage");
                     driverPool.set(new RemoteWebDriver(chromeOptions));
                     System.out.println("Running REMOTE Chrome");
                     break;
